@@ -7,5 +7,7 @@ export const searchActiveSelector = state => state.chat.isSearchActive
 export const filteredMessages = createSelector(
   [messagesSelector, searchTermSelector],
   (messages, searchTerm) =>
-    messages.filter(message => message.text.includes(searchTerm))
+    messages.filter(message =>
+      message.text.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 )

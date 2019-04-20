@@ -1,10 +1,12 @@
+import { formatDate } from '../../../constants/functions'
+
 const now = new Date()
 
 export const MESSAGES_INITIAL_STATE = [
   {
     id: '0',
     time: now,
-    formattedTime: `${now.getHours()}:${now.getMinutes()}`,
+    formattedTime: formatDate(now),
     text: 'well',
   },
 ]

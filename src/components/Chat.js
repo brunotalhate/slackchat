@@ -1,26 +1,23 @@
-import React, { useState } from 'react'
-import { Text, View, TextInput, Button } from 'react-native'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { messagePropTypes } from '../constants/propTypes'
 import { MessagesList } from './MessagesList'
+import { FooterInput } from './FooterInput'
+import { KeyboardHandlingView } from './Shared/KeyboardHandlingView'
 
 export function Chat({ messages, onSendMessage }) {
-  const [newMessage, setNewMessage] = useState('')
   return (
-    <View style={{ flex: 1 }}>
-      <MessagesList messages={messages} />
-      <TextInput
-        value={newMessage}
-        onChangeText={text => setNewMessage(text)}
-      />
-      <Button
-        title='Send'
-        onPress={() => {
-          onSendMessage(newMessage)
-          setNewMessage('')
-        }}
-      />
-    </View>
+    <KeyboardHandlingView
+      render={isKeyboardActive => (
+        <React.Fragment>
+          <MessagesList messages={messages} />
+          <FooterInput
+            onSendMessage={onSendMessage}
+            isKeyboardActive={isKeyboardActive}
+          />
+        </React.Fragment>
+      )}
+    />
   )
 }
 

@@ -5,10 +5,12 @@ import { Chat } from '../components/Chat'
 import {
   filteredMessages,
   searchTermSelector,
+  searchActiveSelector,
 } from '../redux/reducers/chat/selectors'
 import { addMessage } from '../redux/actions/sync/chatSyncActions'
 import { messagePropTypes } from '../constants/propTypes'
 import { chatNavBar } from '../constants/navBars'
+import { formatDate } from '../constants/functions'
 
 class ChatContainer extends Component {
   static propTypes = {
@@ -17,15 +19,31 @@ class ChatContainer extends Component {
     }).isRequired,
     messages: PropTypes.arrayOf(messagePropTypes).isRequired,
     addChatMessage: PropTypes.func.isRequired,
+    isSearchActive: PropTypes.bool.isRequired,
   }
 
-  static navigationOptions = chatNavBar
+  static navigationOptions = ({ navigation }) => {
+    const isSearchActive = navigation.getParam('isSearchActive', false)
+    return chatNavBar(isSearchActive)
+  }
+
+  componentDidMount = () => {
+    const { navigation, isSearchActive } = this.props
+    navigation.setParams({ isSearchActive })
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isSearchActive, navigation } = this.props
+    if (prevProps.isSearchActive !== isSearchActive) {
+      navigation.setParams({ isSearchActive })
+    }
+  }
 
   sendMessage = text => {
     const { messages, addChatMessage } = this.props
     const time = new Date()
     const id = `${messages.length}${time}`
-    const formattedTime = `${time.getHours()}:${time.getMinutes()}`
+    const formattedTime = formatDate(time)
     addChatMessage({ id, text, time, formattedTime })
   }
 
@@ -38,6 +56,7 @@ class ChatContainer extends Component {
 const mapStateToProps = state => ({
   messages: filteredMessages(state),
   searchTerm: searchTermSelector(state),
+  isSearchActive: searchActiveSelector(state),
 })
 
 const mapDispatchToProps = {

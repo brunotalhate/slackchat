@@ -1,18 +1,14 @@
 import React from 'react'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { messagePropTypes } from '../constants/propTypes'
+import { Message } from './Message'
 
 const extractKey = item => item.id
 
-const Message = ({ item }) => {
+const renderMessage = ({ item }) => {
   const { text, formattedTime } = item
-  return (
-    <View>
-      <Text>{formattedTime}</Text>
-      <Text>{text}</Text>
-    </View>
-  )
+  return <Message time={formattedTime} text={text} />
 }
 
 export const MessagesList = ({ messages }) => (
@@ -20,7 +16,7 @@ export const MessagesList = ({ messages }) => (
     <FlatList
       inverted
       data={messages}
-      renderItem={Message}
+      renderItem={renderMessage}
       keyExtractor={extractKey}
     />
   </View>
