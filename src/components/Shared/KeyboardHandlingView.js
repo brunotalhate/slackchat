@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { View, Keyboard, Platform } from 'react-native'
 import PropTypes from 'prop-types'
 
+/*
+ * This component handles the keyboard visibility. When its active, it adds
+ * paddingBottom equals to the keyboard size and pass a boolean to the render
+ * prop with the keyboard visibility.
+ */
 export class KeyboardHandlingView extends Component {
   static propTypes = {
     render: PropTypes.func,

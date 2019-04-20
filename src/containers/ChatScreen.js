@@ -41,6 +41,7 @@ class ChatContainer extends Component {
 
   sendMessage = text => {
     const { messages, addChatMessage } = this.props
+    // Generate the time stamp and message ID
     const time = new Date()
     const id = `${messages.length}${time}`
     const formattedTime = formatDate(time)
@@ -63,6 +64,7 @@ const mapDispatchToProps = {
   addChatMessage: message => addMessage(message),
 }
 
+// I'm not using default export only because it is easier to find the component in VSCode's intellisense this way
 export const ChatScreen = connect(
   mapStateToProps,
   mapDispatchToProps

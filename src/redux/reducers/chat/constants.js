@@ -1,5 +1,5 @@
 export const MESSAGES_INITIAL_STATE = [
-  // Add some dummy data by uncommenting the code below
+  // Add some dummy data by removing the comments from the code below
   // {
   //   id: '0',
   //   time: new Date(),

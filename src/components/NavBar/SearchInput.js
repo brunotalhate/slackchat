@@ -1,16 +1,21 @@
 import React from 'react'
-import { TextInput } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import glamorous from 'glamorous-native'
 import { searchTermSelector } from '../../redux/reducers/chat/selectors'
 import { searchTermUpdate } from '../../redux/actions/sync/chatSyncActions'
 import { theme } from '../../constants/theme'
 
+const StyledSearchInput = glamorous.textInput({
+  flex: 1,
+  height: '100%',
+  fontSize: theme.fontSize.searchBar,
+})
+
 const SearchInputComponent = ({ termToSearch, updateTerm }) => {
   return (
-    <TextInput
+    <StyledSearchInput
       autoFocus
-      style={{ flex: 1, height: '100%', fontSize: theme.fontSize.searchBar }}
       value={termToSearch}
       onChangeText={updateTerm}
       placeholder='Search in #chat'
