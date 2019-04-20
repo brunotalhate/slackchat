@@ -14,6 +14,7 @@ const Avatar = glamorous.image({
   marginTop: theme.module / 2,
   marginRight: theme.module,
   resizeMode: 'cover',
+  backgroundColor: theme.colors.divider,
 })
 
 const Name = glamorous.text({
