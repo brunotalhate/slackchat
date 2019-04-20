@@ -1,11 +1,14 @@
 import React from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, Platform } from 'react-native'
 import PropTypes from 'prop-types'
-import { messagePropTypes } from '../constants/propTypes'
+
+import { KeyboardHandlingView } from './Shared/KeyboardHandlingView'
+import { UserInfo } from './UserInfo'
 import { MessagesList } from './MessagesList'
 import { FooterInput } from './FooterInput'
-import { KeyboardHandlingView } from './Shared/KeyboardHandlingView'
+
 import { theme } from '../constants/theme'
+import { messagePropTypes } from '../constants/propTypes'
 
 export function Chat({ messages, onSendMessage }) {
   return (
@@ -13,6 +16,7 @@ export function Chat({ messages, onSendMessage }) {
       render={isKeyboardActive => (
         <React.Fragment>
           <StatusBar backgroundColor={theme.colors.primaryDark} />
+          {Platform.OS === 'android' && <UserInfo />}
           <MessagesList messages={messages} />
           <FooterInput
             onSendMessage={onSendMessage}
