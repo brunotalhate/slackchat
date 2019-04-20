@@ -5,6 +5,7 @@ const isIOS = Platform.OS === 'ios'
 export const theme = {
   colors: {
     primary: '#4A154B',
+    primaryDark: '#350B36',
     accent: '#3EB67D',
     success: '#1264A3',
     alert: '#E01E5A',
