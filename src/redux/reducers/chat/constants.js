@@ -1,14 +1,11 @@
-import { formatDate } from '../../../constants/functions'
-
-const now = new Date()
-
 export const MESSAGES_INITIAL_STATE = [
-  {
-    id: '0',
-    time: now,
-    formattedTime: formatDate(now),
-    text: 'well',
-  },
+  // Add some dummy data by uncommenting the code below
+  // {
+  //   id: '0',
+  //   time: new Date(),
+  //   formattedTime: '2:12PM',
+  //   text: 'I like hamburgers',
+  // },
 ]
 export const SEARCH_TERM_INITIAL_STATE = {
   isSearchActive: false,
