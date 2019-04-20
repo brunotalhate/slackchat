@@ -6,10 +6,12 @@ export const theme = {
   colors: {
     primary: '#4A154B',
     accent: '#3EB67D',
+    success: '#1264A3',
     alert: '#E01E5A',
     surface: '#fff',
     text: '#000',
     textSecondary: 'rgba(0,0,0,0.54)',
+    disabled: 'rgba(0,0,0,0.2)',
     textInput: '#868686',
     navBar: isIOS ? '#fff' : '#4A154B',
     divider: '#E5E5E5',

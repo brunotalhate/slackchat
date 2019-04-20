@@ -21,8 +21,9 @@ export const StyledIcon = glamorous(VectorIcon)(({ size }) => ({
   }),
 }))
 
-export const Icon = ({ name, color, size, onPress, style }) => {
+export const Icon = ({ name, color, size, onPress, style, disabled }) => {
   const prefix = isIOS ? 'ios-' : 'md-'
+  const iconColor = disabled ? theme.colors.disabled : color
   return (
     <Wrap style={style}>
       <Touchable
@@ -32,12 +33,13 @@ export const Icon = ({ name, color, size, onPress, style }) => {
           top: padding,
           bottom: padding,
         }}
+        disabled={disabled}
         onPress={onPress}
         background={Touchable.SelectableBackgroundBorderless()}
       >
         <StyledIcon
           name={`${prefix}${name}`}
-          color={color || theme.colors.textSecondary}
+          color={iconColor || theme.colors.textSecondary}
           size={size || theme.iconSize.standard}
         />
       </Touchable>
@@ -51,6 +53,7 @@ Icon.propTypes = {
   size: PropTypes.number,
   onPress: PropTypes.func,
   style: ViewPropTypes.style,
+  disabled: PropTypes.bool,
 }
 
 Icon.defaultProps = {
@@ -58,4 +61,5 @@ Icon.defaultProps = {
   size: theme.iconSize.standard,
   onPress: () => {},
   style: {},
+  disabled: false,
 }

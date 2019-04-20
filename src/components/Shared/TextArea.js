@@ -15,6 +15,7 @@ const StyledTextArea = glamorous.textInput(({ inputHeight }) => ({
       maxHeight: 110,
     },
     android: {
+      paddingLeft: theme.module * 2,
       height: Math.min(inputHeight, 100),
     },
   }),

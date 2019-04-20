@@ -8,7 +8,7 @@ import { theme } from '../../constants/theme'
 const Button = glamorous.view(({ disabled }) => ({
   borderWidth: disabled ? 1 : 0,
   borderColor: theme.colors.divider,
-  backgroundColor: disabled ? 'transparent' : theme.colors.accent,
+  backgroundColor: disabled ? 'transparent' : theme.colors.success,
   borderRadius: theme.borderRadius,
 }))
 

@@ -6,7 +6,7 @@ import { Wrap, Avatar, Name, Time, Description } from './Message.components'
 export const Message = ({ name, time, text, imageUrl }) => (
   <Wrap>
     <Avatar source={{ uri: imageUrl }} />
-    <View>
+    <View style={{ flex: 1 }}>
       <Name>
         {name} <Time> {time}</Time>
       </Name>

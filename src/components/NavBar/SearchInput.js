@@ -13,6 +13,8 @@ const SearchInputComponent = ({ termToSearch, updateTerm }) => {
       style={{ flex: 1, height: '100%', fontSize: theme.fontSize.searchBar }}
       value={termToSearch}
       onChangeText={updateTerm}
+      placeholder='Search in #chat'
+      placeholderTextColor={theme.colors.textInput}
     />
   )
 }

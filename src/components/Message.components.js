@@ -5,14 +5,15 @@ import { theme } from '../constants/theme'
 const Wrap = glamorous(Row)({
   alignItems: 'flex-start',
   marginVertical: theme.module,
-  marginHorizontal: theme.module * 2,
+  paddingHorizontal: theme.module * 2,
+  flex: 1,
 })
 
 const Avatar = glamorous.image({
   width: 36,
   height: 36,
   marginTop: theme.module / 2,
-  marginRight: theme.module,
+  marginRight: theme.module * 2,
   resizeMode: 'cover',
   backgroundColor: theme.colors.divider,
 })

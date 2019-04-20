@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Platform } from 'react-native'
 import PropTypes from 'prop-types'
 import { SafeAreaView } from 'react-navigation'
 import glamorous from 'glamorous-native'
@@ -18,33 +19,57 @@ export function FooterInput({ onSendMessage, isKeyboardActive }) {
   const [newMessage, setNewMessage] = useState('')
   return (
     <Wrap forceInset={{ bottom: isKeyboardActive ? 'never' : 'always' }}>
+      {Platform.OS === 'android' && (
+        <Row paddingHorizontal={theme.module} justifyContent='space-between'>
+          <Icon name='happy' />
+          <Icon name='camera' />
+          <Icon name='images' />
+          <Icon name='attach' />
+          <Icon name='code' />
+          <Icon name='at' />
+        </Row>
+      )}
       <Row>
         <TextArea
           value={newMessage}
           onChangeText={setNewMessage}
-          placeholder={`Message ${appInfo.channelName}`}
+          placeholder={`Message #${appInfo.channelName}`}
         />
-        <Icon name='expand' />
-      </Row>
-      <Row padding={theme.module}>
-        <Row flex={1}>
-          <Icon name='at' />
-          <Icon name='code' />
-          <Icon name='attach' />
-        </Row>
-        <Row>
-          <Icon name='images' style={{ marginRight: theme.module }} />
-          <SubmitTextButton
+        {Platform.OS === 'ios' && <Icon name='expand' />}
+        {Platform.OS === 'android' && (
+          <Icon
+            color={theme.colors.success}
+            disabled={newMessage.length < 1}
+            name='send'
+            style={{ marginRight: theme.module }}
             onPress={() => {
               onSendMessage(newMessage)
               setNewMessage('')
             }}
-            disabled={newMessage.length < 1}
-          >
-            Send
-          </SubmitTextButton>
-        </Row>
+          />
+        )}
       </Row>
+      {Platform.OS === 'ios' && (
+        <Row padding={theme.module}>
+          <Row flex={1}>
+            <Icon name='at' />
+            <Icon name='code' />
+            <Icon name='attach' />
+          </Row>
+          <Row>
+            <Icon name='images' style={{ marginRight: theme.module }} />
+            <SubmitTextButton
+              onPress={() => {
+                onSendMessage(newMessage)
+                setNewMessage('')
+              }}
+              disabled={newMessage.length < 1}
+            >
+              Send
+            </SubmitTextButton>
+          </Row>
+        </Row>
+      )}
     </Wrap>
   )
 }
