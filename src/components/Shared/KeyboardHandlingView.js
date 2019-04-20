@@ -37,7 +37,12 @@ export class KeyboardHandlingView extends Component {
     const { render } = this.props
     const { keyboardHeight, isKeyboardActive } = this.state
     return (
-      <View style={{ flex: 1, paddingBottom: keyboardHeight }}>
+      <View
+        style={{
+          flex: 1,
+          paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
+        }}
+      >
         {render(isKeyboardActive)}
       </View>
     )
