@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from './config/redux'
 
+import { createStore } from './config/redux'
 import { Navigator } from './Navigator'
 
 const store = createStore()
