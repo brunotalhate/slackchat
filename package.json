@@ -11,7 +11,7 @@
     "glamorous-native": "^1.4.2",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
-    "react-native": "0.59.4",
+    "react-native": "0.62.3",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-vector-icons": "^6.4.2",
